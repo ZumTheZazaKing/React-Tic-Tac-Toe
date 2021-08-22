@@ -8,8 +8,8 @@ import { Endgame } from './Endgame';
 function App() {
 
   let [turn, setTurn] = useState("Your Turn");
-  let [wins, setWins] = useState(0);
-  let [defeats, setDefeats] = useState(0);
+  let [wins, setWins] = useState(localStorage.getItem("zum_tic_tac_toe_wins") || 0);
+  let [defeats, setDefeats] = useState(localStorage.getItem("zum_tic_tac_toe_defeats") || 0);
   let [endgameMessage, setEndgameMessage] = useState("");
 
   let [playerFills, setPlayerFills] = useState([]);

@@ -1,6 +1,6 @@
 export function Navbar(props){
     return (<div id="navbar">
-        <p>Wins: 0</p>
-        <p>Defeats: 0</p>
+        <p>Wins: {props.wins}</p>
+        <p>Defeats: {props.defeats}</p>
     </div>)
 }

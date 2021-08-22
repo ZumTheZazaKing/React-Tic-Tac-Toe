@@ -64,20 +64,23 @@ export function Ingame(props){
                             props.endgameRef.current.className = "";
                             props.setEndgameMessage("VICTORY")
                             props.setTurn("GAME END");
+                            props.setWins(parseInt(props.wins) + 1);
+                            localStorage.setItem("zum_tic_tac_toe_wins", parseInt(props.wins) + 1)
                             clearTimeout(computerAction);
-                            return;
                         }
                     }
                 }
                 else if ([...props.computerFills, cells[indexPicker].id].includes(winningCondition[0])){
                     if([...props.computerFills, cells[indexPicker].id].includes(winningCondition[1])){
                         if([...props.computerFills, cells[indexPicker].id].includes(winningCondition[2])){
-                            if(props.turn !== "GAME END"){
+                            if(props.turn !== "GAME END" && props.endgameRef.current.className === "hide"){
                                 console.log("You lose");
                                 setTimeout(() => {
                                     props.endgameRef.current.className = "";
                                     props.setEndgameMessage("DEFEAT");
                                     props.setTurn("GAME END")
+                                    props.setDefeats(parseInt(props.defeats) + 1);
+                                    localStorage.setItem("zum_tic_tac_toe_defeats", parseInt(props.defeats) + 1);
                                     clearTimeout(computerAction);
                                 },1100)
                             }
