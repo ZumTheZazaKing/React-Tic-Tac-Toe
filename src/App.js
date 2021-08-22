@@ -12,6 +12,9 @@ function App() {
   let [defeats, setDefeats] = useState(0);
   let [endgameMessage, setEndgameMessage] = useState("");
 
+  let [playerFills, setPlayerFills] = useState([]);
+    let [computerFills, setComputerFills] = useState([]);
+
   let cellRef = useRef();
   let endgameRef= useRef(); 
 
@@ -31,6 +34,10 @@ function App() {
       setEndgameMessage={setEndgameMessage}
       cellRef={cellRef}
       endgameRef={endgameRef}
+      playerFills={playerFills}
+      setPlayerFills={setPlayerFills}
+      computerFills={computerFills}
+      setComputerFills={setComputerFills}
       />
       <Endgame
       endgameMessage={endgameMessage}

@@ -1,6 +1,16 @@
-import { useEffect } from "react";
-
 export function Ingame(props){
+
+    const winningConditions = [
+        ["topLeft","top","topRight"],
+        ["left","middle","right"],
+        ["bottomLeft","bottom","bottomRight"],
+        ["topLeft","left","bottomLeft"],
+        ["top","middle","bottom"],
+        ["topRight","right","bottomRight"],
+        ["topLeft","middle","bottomRight"],
+        ["topRight","middle","bottomLeft"]
+    ]
+
 
     const handleClick = e => {
         if(props.turn !== "Your Turn"){
@@ -10,6 +20,10 @@ export function Ingame(props){
             if(e.target.innerHTML !== "")return;
 
             e.target.innerHTML = "X";
+            props.setPlayerFills([...props.playerFills, e.target.id]);
+
+            
+
             props.setTurn("Computer's Turn");
 
             const ingame = document.querySelector("#ingame");
@@ -23,7 +37,7 @@ export function Ingame(props){
                     if(strike === 9){
                         props.endgameRef.current.className = "";
                         props.setEndgameMessage("DRAW");
-                        return;
+                        props.setTurn("GAME END");
                     }
                 }
             }
@@ -31,15 +45,46 @@ export function Ingame(props){
             let indexPicker = Math.floor(Math.random()*cells.length);
             if(indexPicker === 0){indexPicker++}
 
-            while(cells[indexPicker].innerHTML !== ""){
+            while(cells[indexPicker].innerHTML !== "" && strike !== 9){
                 indexPicker = Math.floor(Math.random()*cells.length);
                 if(indexPicker === 0){indexPicker++}
             }
 
-            setTimeout(() => {
+            const computerAction = setTimeout(() => {
                 props.setTurn("Your Turn");
                 cells[indexPicker].innerHTML = "O";
+                props.setComputerFills([...props.computerFills, cells[indexPicker].id])
             },1000)
+
+            winningConditions.forEach(winningCondition => {
+                if([...props.playerFills, e.target.id].includes(winningCondition[0])){
+                    if([...props.playerFills, e.target.id].includes(winningCondition[1])){
+                        if([...props.playerFills, e.target.id].includes(winningCondition[2])){
+                            console.log("You win");
+                            props.endgameRef.current.className = "";
+                            props.setEndgameMessage("VICTORY")
+                            props.setTurn("GAME END");
+                            clearTimeout(computerAction);
+                            return;
+                        }
+                    }
+                }
+                else if ([...props.computerFills, cells[indexPicker].id].includes(winningCondition[0])){
+                    if([...props.computerFills, cells[indexPicker].id].includes(winningCondition[1])){
+                        if([...props.computerFills, cells[indexPicker].id].includes(winningCondition[2])){
+                            if(props.turn !== "GAME END"){
+                                console.log("You lose");
+                                setTimeout(() => {
+                                    props.endgameRef.current.className = "";
+                                    props.setEndgameMessage("DEFEAT");
+                                    props.setTurn("GAME END")
+                                    clearTimeout(computerAction);
+                                },1100)
+                            }
+                        }
+                    }
+                }
+            })
 
         }
 
