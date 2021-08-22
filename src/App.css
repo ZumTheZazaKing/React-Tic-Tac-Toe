@@ -74,5 +74,8 @@ body #endgame button {
   cursor: pointer;
   font-size: 16px;
 }
+body .hide {
+  display: none !important;
+}
 
 /*# sourceMappingURL=App.css.map */

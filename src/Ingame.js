@@ -1,16 +1,26 @@
-export function Ingame(){
+import { useEffect } from "react"
+
+export function Ingame(props){
+
+    const handleClick = e => {
+        console.log(e.target) 
+
+    }
+    
+
     return (<div id="ingame">
-        <p>Your Turn</p>
+        <p>{props.turn}</p>
+
         <div id="cells">
-            <div id="topLeft"></div>
-            <div id="top"></div>
-            <div id="topRight"></div>
-            <div id="left"></div>
-            <div id="middle"></div>
-            <div id="right"></div>
-            <div id="bottomLeft"></div>
-            <div id="bottom"></div>
-            <div id="bottomRight"></div>
+            <div onClick={e => handleClick(e)} id="topLeft"></div>
+            <div onClick={e => handleClick(e)} id="top"></div>
+            <div onClick={e => handleClick(e)} id="topRight"></div>
+            <div onClick={e => handleClick(e)} id="left"></div>
+            <div onClick={e => handleClick(e)} id="middle"></div>
+            <div onClick={e => handleClick(e)} id="right"></div>
+            <div onClick={e => handleClick(e)} id="bottomLeft"></div>
+            <div onClick={e => handleClick(e)} id="bottom"></div>
+            <div onClick={e => handleClick(e)} id="bottomRight"></div>
         </div>
     </div>)
 }
