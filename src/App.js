@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import './App.css';
 import { Navbar } from './Navbar';
@@ -11,6 +11,9 @@ function App() {
   let [wins, setWins] = useState(0);
   let [defeats, setDefeats] = useState(0);
   let [endgameMessage, setEndgameMessage] = useState("");
+
+  let cellRef = useRef();
+  let endgameRef= useRef(); 
 
   return (
     <div className="App">
@@ -26,9 +29,12 @@ function App() {
       defeats={defeats}
       setDefeats={setDefeats}
       setEndgameMessage={setEndgameMessage}
+      cellRef={cellRef}
+      endgameRef={endgameRef}
       />
       <Endgame
       endgameMessage={endgameMessage}
+      endgameRef={endgameRef}
       />
     </div>
   );
