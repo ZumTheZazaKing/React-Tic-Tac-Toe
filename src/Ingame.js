@@ -98,15 +98,15 @@ export function Ingame(props){
         <p>{props.turn}</p>
 
         <div id="cells">
-            <div onClick={e => handleClick(e)} id="topLeft" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="top" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="topRight" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="left" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="middle" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="right" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="bottomLeft" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="bottom" ref={props.cellRef}></div>
-            <div onClick={e => handleClick(e)} id="bottomRight" ref={props.cellRef}></div>
+            <div onClick={e => handleClick(e)} id="topLeft" ref={props.cellOneRef}></div>
+            <div onClick={e => handleClick(e)} id="top" ref={props.cellTwoRef}></div>
+            <div onClick={e => handleClick(e)} id="topRight" ref={props.cellThreeRef}></div>
+            <div onClick={e => handleClick(e)} id="left" ref={props.cellFourRef}></div>
+            <div onClick={e => handleClick(e)} id="middle" ref={props.cellFiveRef}></div>
+            <div onClick={e => handleClick(e)} id="right" ref={props.cellSixRef}></div>
+            <div onClick={e => handleClick(e)} id="bottomLeft" ref={props.cellSevenRef}></div>
+            <div onClick={e => handleClick(e)} id="bottom" ref={props.cellEightRef}></div>
+            <div onClick={e => handleClick(e)} id="bottomRight" ref={props.cellNineRef}></div>
         </div>
     </div>)
 }
