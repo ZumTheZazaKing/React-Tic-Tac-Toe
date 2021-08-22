@@ -1,5 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
 body {
-  background-color: burlywood;
+  background-color: #49b491;
+  margin: 0;
+  padding: 0;
+}
+body #navbar {
+  background-color: #6092dd;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #navbar p {
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+body #ingame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body #ingame p {
+  font-weight: bold;
+}
+body #ingame #cells {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+body #ingame #cells div {
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+body #ingame #cells #top, body #ingame #cells #topRight, body #ingame #cells #topLeft {
+  border-top: none;
+}
+body #ingame #cells #bottom, body #ingame #cells #bottomRight, body #ingame #cells #bottomLeft {
+  border-bottom: none;
+}
+body #ingame #cells #right, body #ingame #cells #bottomRight, body #ingame #cells #topRight {
+  border-right: none;
+}
+body #ingame #cells #left, body #ingame #cells #bottomLeft, body #ingame #cells #topLeft {
+  border-left: none;
+}
+body #endgame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body #endgame p {
+  font-weight: 700;
+  font-size: 24px;
+}
+body #endgame button {
+  padding: 5px 10px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=App.css.map */

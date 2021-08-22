@@ -1,9 +1,14 @@
 import './App.css';
+import { Navbar } from './Navbar';
+import { Ingame } from './Ingame';
+import { Endgame } from './Endgame';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Navbar/>
+      <Ingame/>
+      <Endgame/>
     </div>
   );
 }
