@@ -82,5 +82,14 @@ body #endgame button {
 body .hide {
   display: none !important;
 }
+body #footer {
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+}
 
 /*# sourceMappingURL=App.css.map */
