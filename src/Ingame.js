@@ -61,6 +61,9 @@ export function Ingame(props){
                     if([...props.playerFills, e.target.id].includes(winningCondition[1])){
                         if([...props.playerFills, e.target.id].includes(winningCondition[2])){
                             console.log("You win");
+                            winningCondition.forEach(winningCell => {
+                                ingame.querySelector(`#${winningCell}`).style.color = "green";
+                            })
                             props.endgameRef.current.className = "";
                             props.setEndgameMessage("VICTORY")
                             props.setTurn("GAME END");
@@ -77,6 +80,9 @@ export function Ingame(props){
                                 console.log("You lose");
                                 setTimeout(() => {
                                     props.endgameRef.current.className = "";
+                                    winningCondition.forEach(winningCell => {
+                                        ingame.querySelector(`#${winningCell}`).style.color = "crimson";
+                                    })
                                     props.setEndgameMessage("DEFEAT");
                                     props.setTurn("GAME END")
                                     props.setDefeats(parseInt(props.defeats) + 1);
