@@ -31,23 +31,37 @@ export function Ingame(props){
 
             let strike = 0;
 
-            for(var i = 1; i < cells.length; i++){
-                if(cells[i].innerHTML !== ""){
-                    strike++;
-                    if(strike === 9){
-                        props.endgameRef.current.className = "";
-                        props.setEndgameMessage("DRAW");
-                        props.setTurn("GAME END");
-                    }
-                }
-            }
-
             let indexPicker = Math.floor(Math.random()*cells.length);
             if(indexPicker === 0){indexPicker++}
 
-            while(cells[indexPicker].innerHTML !== "" && strike !== 9){
+            while(cells[indexPicker].innerHTML !== ""){
+                console.log(strike);
                 indexPicker = Math.floor(Math.random()*cells.length);
                 if(indexPicker === 0){indexPicker++}
+                strike++;
+                if(strike === 9){
+                    props.endgameRef.current.className = "";
+                    props.setEndgameMessage("DRAW");
+                    props.setTurn("GAME END");
+                    winningConditions.forEach(winningCondition => {
+                        if([...props.playerFills, e.target.id].includes(winningCondition[0])){
+                            if([...props.playerFills, e.target.id].includes(winningCondition[1])){
+                                if([...props.playerFills, e.target.id].includes(winningCondition[2])){
+                                    console.log("You win");
+                                    winningCondition.forEach(winningCell => {
+                                        ingame.querySelector(`#${winningCell}`).style.color = "green";
+                                    })
+                                    props.endgameRef.current.className = "";
+                                    props.setEndgameMessage("VICTORY")
+                                    props.setTurn("GAME END");
+                                    props.setWins(parseInt(props.wins) + 1);
+                                    localStorage.setItem("zum_tic_tac_toe_wins", parseInt(props.wins) + 1)
+                                }
+                            }
+                        }
+                    })
+                    return;
+                }
             }
 
             const computerAction = setTimeout(() => {
